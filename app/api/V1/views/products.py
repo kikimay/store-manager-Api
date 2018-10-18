@@ -1,6 +1,8 @@
 from flask import Flask, Blueprint
+#from app import create_app
 
 
+products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
 
 products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
 app = Flask(__name__)
@@ -26,7 +28,7 @@ class Products(object):
             return make_response(jsonify({"status":"not acceptable","message":"all fields must be filled"}),406)
 
         if not price.isdigit():
-            return make_response(jsonify({"status":"not acceptable","message":"price not valid"}),405)
+            return make_response(jsonify({"status":"not acceptable","message":"price not valid"}),404)
 
         if not name.isalpha():
             return make_response(jsonify({"status":"not acceptable","message":"product name not valid"}),405)

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Blueprint
 
 
 from app.api.V1.views import sales
@@ -15,7 +15,7 @@ def create_app(config):
     app.url_map.strict_slashes = False
     
     #app.config.from_object(app_config[config])
-  #  app.config["TESTING"] = True
+    #app.config["TESTING"] = True
   
 
     from .api.V1.views.sales import sales_blueprint
