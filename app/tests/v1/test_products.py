@@ -58,7 +58,7 @@ def test_product_price_not_digit1():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[1] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_products_product_name_not_str():
     result=app.test_client()
