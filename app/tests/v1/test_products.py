@@ -1,9 +1,11 @@
+from app import create_app
 import pytest
 from flask import json
-from app import create_app
+#from app import create_app
 from app.api.V1.views.products import Products
 
-
+config = 'TESTING'
+app = create_app(config)
 
 
 sample_product=[
@@ -38,7 +40,7 @@ sample_product_updates=[
 
 def test_products_retrive_all():
     result=app.test_client()
-    response= result.get('/api/v1/products',content_type='application/json')
+    response= result.get('/products',content_type='application/json')
     assert(response.status_code==404)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''

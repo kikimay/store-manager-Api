@@ -1,3 +1,15 @@
+from app import create_app
+import pytest
+from flask import json
+#from app import create_app
+from app.api.V1.views.sales import Sales
+
+config = 'TESTING'
+app = create_app(config)
+
+
+
+
 #SALE INPUT FOR TESTS
 
 sample_sale=[{
