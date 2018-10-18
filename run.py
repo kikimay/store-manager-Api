@@ -1,9 +1,7 @@
-import os
+from app import create_app 
 
-from app import create_app
+CONFIG_TYPE = 'development' 
+app = create_app(CONFIG_TYPE)
 
-config_name="development"
-app = create_app(config_name)
-
-if __name__ == '__main__':
+if __name__ == '__main__': 
     app.run()

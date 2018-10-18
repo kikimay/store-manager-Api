@@ -1,20 +1,42 @@
-# app/__init__.py
-
 from flask import Flask
-from app.tests.v1 import test_products
-from app.tests.v1 import test_sales
 
 
-# local import
 from instance.config import app_config
 
-# initialize sql-alchemy
-#db = SQLAlchemy()
+from app.api.V1.views import sales
+from app.api.V1.views import products
 
 
-def create_app(config_name):
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
+
+def create_app(config):
     
+    
+    
+    app = Flask(__name__)
+    
+    app.url_map.strict_slashes = False
+    app.config.from_object(app_config[config])
+    app.config["TESTING"] = True
+
+    from .api.V1.views.sales import sales_blueprint
+    app.register_blueprint(sales_blueprint)
+    from .api.V1.views.products import products_blueprint
+    app.register_blueprint(products_blueprint)
+
+
     return app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
