@@ -93,3 +93,14 @@ class sales(object):
                 return make_response(jsonify({"status":"created", "sales":sales, "sale_items":sale_items, "saler":sale, "sale_item":sale_item,}),201)
             else:
                 return make_response(jsonify({"status":"not acceptable", "message":"You must add atleast one item"}),406)
+ 
+
+    @sales_blueprint.route("/sales", methods=["GET"])
+    def salesall():
+        
+        if len(sales) == 0:
+            return make_response(jsonify({"status":"not found","message":"sale you are looking for does not exist"}),404)
+                   
+        else:
+            return make_response(jsonify({"status":"ok", "sales":sales}),200)
+        
