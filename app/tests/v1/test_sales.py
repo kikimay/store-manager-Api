@@ -173,7 +173,7 @@ def test_sales_Total_paid_empty():
     result=app.test_client()
     
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[4]) ,content_type='application/json')
-    assert(response.status_code==406)
+    assert(response.status_code==404)
     
 
 
