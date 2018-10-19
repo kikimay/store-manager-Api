@@ -145,7 +145,7 @@ def test_sale_quantity_not_digit():
     result=app.test_client()
    
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[0]) ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
     
 
 def test_sales_product_name_not_str():
