@@ -127,7 +127,7 @@ def test_products_update_price_not_digit():
     result=app.test_client()
    
     response= result.put('/api/v1/add_product', data=sample_product_updates[1] ,content_type='application/json')
-    assert(response.status_code==405)
+    assert(response.status_code==404)
 
 def test_products_update_price_not_digit1():
     result=app.test_client()
