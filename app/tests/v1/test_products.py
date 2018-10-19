@@ -139,7 +139,7 @@ def test_update_products_none():
     result=app.test_client()
     
     response= result.put('/api/v1/products/1', data=json.dumps(sample_product_updates[6]) ,content_type='application/json')
-    assert(response.status_code==406)
+    assert(response.status_code==404)
 
 def test_update_product_price_only_successfully():
     result=app.test_client()
