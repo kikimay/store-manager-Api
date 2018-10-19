@@ -90,3 +90,6 @@ class sales(object):
                     }
 
                 sales.append(sale)           
+                return make_response(jsonify({"status":"created", "sales":sales, "sale_items":sale_items, "saler":sale, "sale_item":sale_item,}),201)
+            else:
+                return make_response(jsonify({"status":"not acceptable", "message":"You must add atleast one item"}),406)
