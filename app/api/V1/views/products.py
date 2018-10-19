@@ -67,7 +67,7 @@ class Products(object):
 
 
     @products_blueprint.route("/api/v1/products", methods=["GET"])
-    def productsall(): #a function that returns all products
+    def productsall(): #a function that returns all products available
         if len(products) == 0:
             return make_response(jsonify({"status":"not found","message":"products you are looking for does not esxist"}),404)
         else:
