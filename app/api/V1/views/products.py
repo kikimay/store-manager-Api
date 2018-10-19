@@ -73,5 +73,22 @@ class Products(object):
         else:
             return make_response(jsonify({"status":"ok", "products":products}),200)
 
+    @app.route('/api/v1/products/<int:product_id>', methods=['GET'])
+    def specificproduct(product_id):#a function that gets a specific product item by id
+        
+        if len(products) != 0:#check whether list products is empty
+            for product in products:
+                Id= product.get('product_id')
+                if Id == product_id:
+                    return make_response(jsonify({"status":"ok", "products":products}),200)
+                else:
+                    return make_response(jsonify({'error':'the product does not exist'}),404)
+
+        
+
+        else:
+            return make_response(jsonify({'error':'the product does not exist'}),404)
+
+
 
     
