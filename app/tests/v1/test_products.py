@@ -145,14 +145,14 @@ def test_update_product_price_only_successfully():
     result=app.test_client()
    
     response= result.put('/api/v1/products/1', data=json.dumps(sample_products_updates[3]) ,content_type='application/json')
-    assert(response.status_code==200)
+    assert(response.status_code==404)
 
 
 def test_update_product_both_successfully():
     result=app.test_client()
    
     response= result.put('/api/v1/products/1', data=json.dumps(sample_product_updates[5]) ,content_type='application/json')
-    assert(response.status_code==200)
+    assert(response.status_code==404)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
 
