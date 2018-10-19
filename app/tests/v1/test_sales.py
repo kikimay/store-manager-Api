@@ -2,7 +2,7 @@ from app import create_app
 import pytest
 from flask import json
 #from app import create_app
-from app.api.V1.views.sales import Sales
+from app.api.V1.views.sales import sales
 
 config = 'TESTING'
 app = create_app(config)
