@@ -104,3 +104,17 @@ class sales(object):
         else:
             return make_response(jsonify({"status":"ok", "sales":sales}),200)
         
+
+
+    @sales_blueprint.route('/sales/<int:sale_id>', methods=['GET'])
+    def specificsale(sale_id):
+        
+        sale = [sale for sale in sales if sale.get('sale_id')==sale_id]
+        
+        
+        if len(sales) == 0:
+            return make_response(jsonify({"status":"not found","message":"sale you are looking for does not exist"}),404)
+                   
+        else:
+            return make_response(jsonify({"status":"ok", "sale":sale}),200)
+
