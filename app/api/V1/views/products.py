@@ -1,16 +1,13 @@
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint,request,jsonify,make_response
 #from app import create_app
 
 
 products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
 
-products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
-app = Flask(__name__)
-
 products = []
 
 class Products(object):
-    @app.route("/products", methods=["POST"])
+    @products_blueprint.route("/products", methods=["POST"])
     def add_product(): #define a method that adds new product item
         
         
@@ -67,4 +64,14 @@ class Products(object):
         products.append(product)
 
         return make_response(jsonify({"status":"created", "product":product, "products":products }),201)
+
+
+    @products_blueprint.route("/api/v1/products", methods=["GET"])
+    def productsall(): #a function that returns all products
+        if len(products) == 0:
+            return make_response(jsonify({"status":"not found","message":"products you are looking for does not esxist"}),404)
+        else:
+            return make_response(jsonify({"status":"ok", "products":products}),200)
+
+
     

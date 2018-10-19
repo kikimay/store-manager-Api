@@ -87,7 +87,7 @@ def test_product_image_empty():
 def test_product_successfully():
     result=app.test_client()
    
-    response= result.post('/api/v1/add_product', data=json.dumps(sample_product[6]) ,content_type='application/json')
+    response= result.post('/products', data=json.dumps(sample_product[6]) ,content_type='application/json')
     json.loads(response.data)
     assert(response.status_code==201)
 
