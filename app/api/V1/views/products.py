@@ -73,27 +73,42 @@ class Products(object):
         else:
             return make_response(jsonify({"status":"ok", "products":products}),200)
 
-    @products_blueprint.route('/products/<int:product_id>', methods=['GET'])
-    def specificproduct(product_id):#a function that gets a specific product item by id
+    
+
+    @products_blueprint.route('/products/<int:product_id>', methods=['PUT', 'GET', 'DELETE'])
+    def updateproductss(product_id):
         
-        if len(products) != 0:#check whether list products is empty
-            for product in products:
-                Id= product.get('product_id')
-                if Id == product_id:
-                    return make_response(jsonify({"status":"ok", "products":products}),200)
-                else:
-                    return make_response(jsonify({'error':'the product does not exist'}),404)
+       
+        if request.method == 'PUT':
+            data = request.get_json()
+            if len(products) != 0:
+                for product in products:
+                    Id= product.get('product_id')
+                    if Id == product_id:
+                        if not data['price'].isdigit():#check whether price isa digit
+                            return make_response(jsonify({"status":"not acceptable","message":"Price is not valid"}),406)
+                    
+                        if not data['price'] == "" and data['image'] == "":#check if data null
+                            product['price'] = data['price']
+                            return make_response(jsonify({"status":"ok", "product":product}),200)
+                        elif not data['image'] == "" and data['price'] == "":
+                            product['image'] = data['image']
+                            return make_response(jsonify({"status":"ok", "product":product}),200)
+                        elif not data['price'] == "" and not data['image'] == "":
+                            product['price'] = data['price']
+                            product['image'] = data['image']
+                            return make_response(jsonify({"status":"ok", "product":product}),200)
+                        else:
+                            return make_response(jsonify({"status":"No updates done", "product":product}),200)
+                    
+                    else:
+                        return make_response(jsonify({'error': 'the product does not exist'}), 404)
 
-        
+                            
+            else:
+                return make_response(jsonify({'error': 'the product does not exist'}), 404)
 
-        else:
-            return make_response(jsonify({'error':'the product does not exist'}),404)
-
-
-    @products_blueprint.route('/products/<int:product_id>', methods=['DELETE'])
-    def deleteproduct(product_id):# a function to delete product item
-        
-        if request.method == 'DELETE':#check method
+        elif request.method == 'DELETE':#check method
            
             if len(products) != 0:#check the list to make sure its not empty
                 for product in products:
@@ -109,10 +124,18 @@ class Products(object):
                 return make_response(jsonify({'error': 'the product does not exist'}), 404)
 
         else:
-            return product.specificproduct(product_id)
+            if len(products) != 0:#check whether list products is empty
+                for product in products:
+                    Id= product.get('product_id')
+                    if Id == product_id:
+                        return make_response(jsonify({"status":"ok", "products":products}),200)
+                    else:
+                        return make_response(jsonify({'error':'the product does not exist'}),404)
+
             
 
-   
+            else:
+                return make_response(jsonify({'error':'the product does not exist'}),404)
 
-
+       
     
