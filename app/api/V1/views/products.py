@@ -88,16 +88,13 @@ class Products(object):
                         if not data['price'].isdigit():#check whether price isa digit
                             return make_response(jsonify({"status":"not acceptable","message":"Price is not valid"}),406)
                     
-                        if not data['price'] == "" and data['image'] == "":#check if data null
-                            product['price'] = data['price']
+                        if data['price'] != "": #check if data null
+                            product['price'] = data['price'] 
                             return make_response(jsonify({"status":"ok", "product":product}),200)
-                        elif not data['image'] == "" and data['price'] == "":
+                        elif data['image'] != "": 
                             product['image'] = data['image']
                             return make_response(jsonify({"status":"ok", "product":product}),200)
-                        elif not data['price'] == "" and not data['image'] == "":
-                            product['price'] = data['price']
-                            product['image'] = data['image']
-                            return make_response(jsonify({"status":"ok", "product":product}),200)
+                       
                         else:
                             return make_response(jsonify({"status":"No updates done", "product":product}),200)
                     
@@ -131,4 +128,5 @@ class Products(object):
                 return make_response(jsonify({'error':'the product does not exist'}),404)
 
        
-    
+    def stock(self):
+        return products
