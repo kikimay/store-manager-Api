@@ -66,12 +66,29 @@ class Products(object):
         return make_response(jsonify({"status":"created", "product":product, "products":products }),201)
 
 
-    @products_blueprint.route("/api/v1/products", methods=["GET"])
-    def productsall(): #a function that returns all products
+    @products_blueprint.route("/products", methods=["GET"])
+    def productsall(): #a function that returns all products available
         if len(products) == 0:
             return make_response(jsonify({"status":"not found","message":"products you are looking for does not esxist"}),404)
         else:
             return make_response(jsonify({"status":"ok", "products":products}),200)
+
+    @products_blueprint.route('/products/<int:product_id>', methods=['GET'])
+    def specificproduct(product_id):#a function that gets a specific product item by id
+        
+        if len(products) != 0:#check whether list products is empty
+            for product in products:
+                Id= product.get('product_id')
+                if Id == product_id:
+                    return make_response(jsonify({"status":"ok", "products":products}),200)
+                else:
+                    return make_response(jsonify({'error':'the product does not exist'}),404)
+
+        
+
+        else:
+            return make_response(jsonify({'error':'the product does not exist'}),404)
+
 
 
     
