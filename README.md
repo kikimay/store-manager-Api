@@ -135,7 +135,9 @@ pytest
 |    8  | GET    | /api/v1/sales/<int:sale_id>      | Retrieve a specific sale             |
 |                   |
 |   
-
+ 
+  *find postman documentation here https://web.postman.co/collections/5645063-c67c3435-303f-48c9-b890-b405e0036463?workspace=2b9a9d79-a360-41c8-850a-bba4b93c2b59
+ 
 
 ## Built With
 
