@@ -76,7 +76,7 @@ class Products(object):
     
 
     @products_blueprint.route('/products/<int:product_id>', methods=['PUT', 'GET', 'DELETE'])
-    def updateproductss(product_id):
+    def updateproducts(product_id):
         
        
         if request.method == 'PUT':
@@ -101,9 +101,7 @@ class Products(object):
                         else:
                             return make_response(jsonify({"status":"No updates done", "product":product}),200)
                     
-                    else:
-                        return make_response(jsonify({'error': 'the product does not exist'}), 404)
-
+                   
                             
             else:
                 return make_response(jsonify({'error': 'the product does not exist'}), 404)
@@ -116,9 +114,7 @@ class Products(object):
                     if Id == product_id:#compare the ids
                         products.remove(product)#delete the product item
                         return make_response(jsonify({"status":"ok", "products":products}),200)
-                    else:
-                        return make_response(jsonify({'error': 'the product does not exist'}), 404)
-
+                    
 
             else:
                 return make_response(jsonify({'error': 'the product does not exist'}), 404)
@@ -128,11 +124,8 @@ class Products(object):
                 for product in products:
                     Id= product.get('product_id')
                     if Id == product_id:
-                        return make_response(jsonify({"status":"ok", "products":products}),200)
-                    else:
-                        return make_response(jsonify({'error':'the product does not exist'}),404)
-
-            
+                        return make_response(jsonify({"status":"ok", "product":product}),200)
+                   
 
             else:
                 return make_response(jsonify({'error':'the product does not exist'}),404)
