@@ -1,9 +1,11 @@
+from app import create_app
 import pytest
 from flask import json
-from app import create_app
+#from app import create_app
 from app.api.V1.views.products import Products
 
-
+config = 'TESTING'
+app = create_app(config)
 
 
 sample_product=[
@@ -38,7 +40,7 @@ sample_product_updates=[
 
 def test_products_retrive_all():
     result=app.test_client()
-    response= result.get('/api/v1/products',content_type='application/json')
+    response= result.get('/products',content_type='application/json')
     assert(response.status_code==404)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
@@ -50,42 +52,42 @@ def test_product_price_not_digit():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[0] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_product_price_not_digit1():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[1] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_products_product_name_not_str():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[2] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_products_product_name_empty():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[3] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_products_price_empty():
     result=app.test_client()
    
     response= result.post('/api/v1/add_product', data=sample_product[4] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_product_image_empty():
     result=app.test_client()
     
     response= result.post('/api/v1/add_product', data=sample_product[5] ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
 
 def test_product_successfully():
     result=app.test_client()
    
-    response= result.post('/api/v1/add_product', data=json.dumps(sample_product[6]) ,content_type='application/json')
+    response= result.post('/products', data=json.dumps(sample_product[6]) ,content_type='application/json')
     json.loads(response.data)
     assert(response.status_code==201)
 
