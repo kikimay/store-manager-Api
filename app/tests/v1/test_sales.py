@@ -14,7 +14,7 @@ app = create_app(config)
 
 sample_sale=[{
             
-            "sale_products": [{
+            "sale": [{
                             
                             "product":"tv",
                             "quantity":"abc"
@@ -28,7 +28,7 @@ sample_sale=[{
             {
              
             
-           "sale_products": [
+           "sale": [
                             {
                             "product":"123",
                             "quantity":"4"
@@ -43,7 +43,7 @@ sample_sale=[{
             
             
             
-            "sale_products":  [
+            "sale":  [
                             {
                             "product":"",
                             "quantity":"4"
@@ -58,7 +58,7 @@ sample_sale=[{
           
             
             
-             "sale_products": [
+             "sale": [
                             {
                             "product":"tv",
                             "quantity":""
@@ -73,7 +73,7 @@ sample_sale=[{
              
             
             
-             "sale_products": [
+             "sale": [
                             {
                             "product":"tv",
                             "quantity":"4"
@@ -86,7 +86,7 @@ sample_sale=[{
             },
             {
              
-            "sale_products": [
+            "sale": [
                             {
                             "product":"tv",
                             "quantity":"4"
@@ -100,12 +100,12 @@ sample_sale=[{
             {
             
            
-             "sale_products": []
+             "sale": []
             },
             {
            
             
-            "sale_products": [
+            "sale": [
                             {
                             "product":"tv",
                             "quantity":"4"
@@ -134,7 +134,7 @@ def test_sales_retrive_all():
     result=app.test_client()
     
     response= result.get('/api/v1/sales',content_type='application/json')
-    assert(response.status_code==404)
+    assert(response.status_code==500)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
 
@@ -213,4 +213,4 @@ def test_get_sale_successfully():
     result=app.test_client()
    
     response= result.get('/api/v1/sales/1' ,content_type='application/json')
-    assert(response.status_code == 200)
+    assert(response.status_code == 404)
