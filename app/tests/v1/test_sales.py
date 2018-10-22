@@ -14,109 +14,83 @@ app = create_app(config)
 
 sample_sale=[{
             
-            "sale": [{
+            
                             
                             "product":"tv",
-                            "quantity":"abc"
+                            "quantity":"abc",
+                            "total":"200"
                             },
-                            {
-                            "product":"tv",
-                            "quantity":"def"
-                            }
-                           ]
-            },
-            {
+                            
+            
+           
              
             
-           "sale": [
+            
                             {
                             "product":"123",
-                            "quantity":"4"
+                            "quantity":"4",
+                             "total":"200"
                             },
-                            {
-                            "product":"456",
-                            "quantity":"9"
-                            }
-                           ]
-            },
-            {
-            
-            
-            
-            "sale":  [
-                            {
-                            "product":"",
-                            "quantity":"4"
-                            },
-                            {
-                            "product":"",
-                            "quantity":"9"
-                            }
-                           ]
-            },
-            {
+                            
+           
           
             
             
-             "sale": [
+            
+              
+                            {
+                            "product":"",
+                            "quantity":"4",
+                             "total":"200"
+                            },
+                            
+            
+            
+            
+             
                             {
                             "product":"tv",
-                            "quantity":""
+                            "quantity":"",
+                             "total":"200"
                             },
+                            
+            
+            
+             
                             {
-                            "product":"phone",
-                            "quantity":""
-                            }
-                           ]
-            },
-            {
+                            "product":"tv",
+                            "quantity":"4",
+                             "total":""
+                            },
+                            
+            
              
             
-            
-             "sale": [
                             {
                             "product":"tv",
-                            "quantity":"4"
+                            "quantity":"4",
+                             "total":"200"
                             },
-                            {
-                            "product":"phone",
-                            "quantity":"9"
-                            }
-                           ]
-            },
-            {
+                           
+            
+            
+           
              
-            "sale": [
+                            {
+                            "product":"",
+                            "quantity":"",
+                             "total":""
+                            },
+            
+            
+             
                             {
                             "product":"tv",
-                            "quantity":"4"
-                            },
-                            {
-                            "product":"phone",
-                            "quantity":"9"
-                            }
-                           ]
-            },
-            {
-            
-           
-             "sale": []
-            },
-            {
-           
-            
-            "sale": [
-                            {
-                            "product":"tv",
-                            "quantity":"4"
-                            },
-                            {
-                            "product":"phone",
-                            "quantity":"9"
-                            }
-                           ]
-            }
-        ]
+                            "quantity":"4",
+                             "total":"200"
+                            }]
+                            
+        
 
 
 
