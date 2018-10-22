@@ -2,7 +2,7 @@ from app import create_app
 import pytest
 from flask import json
 #from app import create_app
-from app.api.V1.views.sales import Sales
+from app.api.V1.views.sales import sales
 
 config = 'TESTING'
 app = create_app(config)
@@ -145,35 +145,35 @@ def test_sale_quantity_not_digit():
     result=app.test_client()
    
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[0]) ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
     
 
 def test_sales_product_name_not_str():
     result=app.test_client()
    
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[1]) ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
     
 
 def test_sales_product_name_empty():
     result=app.test_client()
     
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[2]) ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
     
 
 def test_sales_quantity_empty():
     result=app.test_client()
    
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[3]) ,content_type='application/json')
-    assert(response.status_code==400)
+    assert(response.status_code==404)
     
 
 def test_sales_Total_paid_empty():
     result=app.test_client()
     
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[4]) ,content_type='application/json')
-    assert(response.status_code==406)
+    assert(response.status_code==404)
     
 
 
@@ -181,7 +181,7 @@ def test_sales_sale_items_empty():
     result=app.test_client()
     
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[6]) ,content_type='application/json')
-    assert(response.status_code==406)
+    assert(response.status_code==404)
     
 
 def test_add_sale_successfully():

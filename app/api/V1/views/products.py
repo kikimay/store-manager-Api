@@ -89,6 +89,28 @@ class Products(object):
         else:
             return make_response(jsonify({'error':'the product does not exist'}),404)
 
+    @products_blueprint.route('/products/<int:product_id>', methods=['DELETE'])
+    def deleteproduct(product_id):# a function to delete product item
+        
+        if request.method == 'DELETE':#check method
+           
+            if len(products) != 0:#check the list to make sure its not empty
+                for product in products:
+                    Id = product.get('product_id')#get product ids for product items
+                    if Id == product_id:#compare the ids
+                        products.remove(product)#delete the product item
+                        return make_response(jsonify({"status":"ok", "products":products}),200)
+                    else:
+                        return make_response(jsonify({'error': 'the product does not exist'}), 404)
+
+
+            else:
+                return make_response(jsonify({'error': 'the product does not exist'}), 404)
+
+        else:
+            return product.specificproduct(product_id)
+            
+
 
 
     
