@@ -108,7 +108,7 @@ def test_sales_retrive_all():
     result=app.test_client()
     
     response= result.get('/api/v1/sales',content_type='application/json')
-    assert(response.status_code==500)
+    assert(response.status_code==404)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
 
@@ -181,10 +181,10 @@ def test_get_sale_not_created():
     result=app.test_client()
    
     response= result.get('/api/v1/sales/100' ,content_type='application/json')
-    assert(response.status_code == 500)
+    assert(response.status_code == 404)
 
 def test_get_sale_successfully():
     result=app.test_client()
    
     response= result.get('/api/v1/sales/1' ,content_type='application/json')
-    assert(response.status_code == 500)
+    assert(response.status_code == 404)
