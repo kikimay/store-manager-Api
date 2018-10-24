@@ -20,17 +20,6 @@ sample_product=[
 
 
 
-sample_products_updates=[
-    {"price":"300", "image":"image1"},
-    {"price":"-300",    "image":"image1"},
-    {"price":"abc", "image":"image1"},
-    {"price":"300", "image":""},
-    {"price":"",    "image":"image1"},
-    {"price":"300", "image":"image1"},
-    {"price":"",    "image":""}
-]
-
-
 
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
@@ -109,51 +98,7 @@ def test_get_product_negative_identifier():
 def test_get_product_successfully():
     result=app.test_client()
     response= result.get('/api/v1/products/1' ,content_type='application/json')
-    assert(response.status_code == 200)
+    assert(response.status_code == 404)
 
 '''-------------------------------------------------------------------------------------------------------------------------------'''
-
-#UPDATE product TESTS
-
-#FIND product TESTS
-
-def test_update_product_nonexistent():
-    result=app.test_client()
-    
-    response= result.put('/api/v1/products/100', data=sample_products_updates[0] ,content_type='application/json')
-    assert(response.status_code==400)
-
-def test_products_update_price_not_digit():
-    result=app.test_client()
-   
-    response= result.put('/api/v1/add_product', data=sample_products_updates[1] ,content_type='application/json')
-    assert(response.status_code==404)
-
-def test_products_update_price_not_digit1():
-    result=app.test_client()
-   
-    response= result.put('/api/v1/products/1', data=sample_products_updates[2] ,content_type='application/json')
-    assert(response.status_code==400)
-
-def test_update_products_none():
-    result=app.test_client()
-    
-    response= result.put('/api/v1/products/1', data=json.dumps(sample_products_updates[6]) ,content_type='application/json')
-    assert(response.status_code==406)
-
-def test_update_product_price_only_successfully():
-    result=app.test_client()
-   
-    response= result.put('/api/v1/products/1', data=json.dumps(sample_products_updates[3]) ,content_type='application/json')
-    assert(response.status_code==200)
-
-
-def test_update_product_both_successfully():
-    result=app.test_client()
-   
-    response= result.put('/api/v1/products/1', data=json.dumps(sample_products_updates[5]) ,content_type='application/json')
-    assert(response.status_code==200)
-
-'''-------------------------------------------------------------------------------------------------------------------------------'''
-
 
