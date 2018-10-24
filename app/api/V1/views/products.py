@@ -18,7 +18,7 @@ class Products(object):
         name = data['name']
         price = data['price']
         image = data['image']
-        quantity = data['qantity']
+        quantity = data['quantity']
         
         
        
