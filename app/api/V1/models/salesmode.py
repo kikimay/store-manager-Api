@@ -45,4 +45,3 @@ class SalesModel(object):
 
 
 
-
