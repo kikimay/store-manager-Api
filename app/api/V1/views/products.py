@@ -9,7 +9,7 @@ products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
 
 class Products(object):
     @products_blueprint.route("/products", methods=["POST"])
-    def add_product(): #define a method that adds new product item
+    def add_product(): 
         
         
         if not request.is_json:
