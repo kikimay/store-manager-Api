@@ -3,14 +3,9 @@ This repository holds the API endpoints for the store-manager app.
 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/362aef5811d9653097c6/maintainability)](https://codeclimate.com/github/kikimay/store-manager-Api/maintainability)
-
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/362aef5811d9653097c6/test_coverage)](https://codeclimate.com/github/kikimay/store-manager-Api/test_coverage)
-
 [![Build Status](https://travis-ci.org/kikimay/store-manager-Api.svg?branch=development)](https://travis-ci.org/kikimay/store-manager-Api)
-
 [![codecov](https://codecov.io/gh/kikimay/store-manager-Api/branch/development/graph/badge.svg)](https://codecov.io/gh/kikimay/store-manager-Api)
-
 
  http://www.apache.org/licenses/LICENSE-2.0
 
@@ -122,18 +117,16 @@ pytest
 
 # Endpoints Available
 
-|    #  | Method | Endpoint                        | Description                           |
-|-------| ------ | ------------------------------- | ------------------------------------- |                 |        |
-|    1  | POST   | /api/v1/add_product             | Create a new  product_item                
-|    2  | GET    | /api/v1/products                | Retrieve all products                  |
-|    3  | GET    | /api/v1/product/<int:product_id>| Retrieve a specific product by product id|
-|    4  | DELETE | /api/v1/products/<int:product_id>| Delete a specific product by product id |
-|    5  | PUT    | /api/v1/product/<int:product_id>|Update a specific product by product id|
-
-|    6  | POST   | /api/v1/make_sale                | make a sale                        |
-|    7  | GET    | /api/v1/sales                    | Retrieve all sales                |
-|    8  | GET    | /api/v1/sales/<int:sale_id>      | Retrieve a specific sale             |
-|                   |
+|    #  | Method | Endpoint                          | Description                           |
+|-------| ------ | --------------------------------- | ------------------------------------- | |    1  | POST   | /api/v1/add_product               | Create a new  product_item            |
+|    2  | GET    | /api/v1/products                  | Retrieve all products                 |
+|    3  | GET    | /api/v1/product/<int:product_id>  | Retrieve a specific product by id     |
+|    4  | DELETE | /api/v1/products/<int:product_id> | Delete a specific product by  id      |
+|    5  | PUT    | /api/v1/product/<int:product_id>  |Update a specific product by  id       |
+|    6  | POST   | /api/v1/make_sale                 | make a sale                           |
+|    7  | GET    | /api/v1/sales                     | Retrieve all sales                    |
+|    8  | GET    | /api/v1/sales/<int:sale_id>       | Retrieve a specific sale              |
+|                   
 |   
  
   *find postman documentation here https://web.postman.co/collections/5645063-c67c3435-303f-48c9-b890-b405e0036463?workspace=2b9a9d79-a360-41c8-850a-bba4b93c2b59

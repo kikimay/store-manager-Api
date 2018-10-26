@@ -6,10 +6,14 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coveralls codecov
+  - pip install codeclimate-test-reporter
 
 
 script:
-  - "pytest"
-
+  - coverage run --source=tests/v1 -m pytest && coverage report
 after_success:
   - coveralls
+  -codeclimate-test-reporter
+
+cache:
+  - pip
