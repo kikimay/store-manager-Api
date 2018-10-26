@@ -1,15 +1,15 @@
 from flask import Flask, Blueprint,request,jsonify,make_response
+from app.api.V1.models.items import products
 from app.api.V1.models.items import ProductsModel
 from app.api.V1.utils.validators import  json_check, quantity_checker, name_checker, price_checker, image_checker
 
 
 products_blueprint = Blueprint('products', __name__,url_prefix='/api/v1')
 
-products_model = ProductsModel()
-        
+
 class Products(object):
     @products_blueprint.route("/products", methods=["POST"])
-    def add_product(): #define a method that adds new product item
+    def add_product(): 
         
         
         if not request.is_json:
@@ -38,35 +38,138 @@ class Products(object):
         if image == "":
             return make_response(jsonify({"status":"not acceptable", "message":"Please fill all the required fields"}),406)
 
-     
+        products_model = ProductsModel(name,price,image,quantity)
         product = products_model.find_product_by_name_and_price(name, price)
-
+       
         if product:
             return make_response(jsonify({"status":"forbidden","message":"product already exists"}),403)
            
         else:
-            item = products_model.create_item(name, price, image, quantity)
-            items = products_model.retrive_all_products()
+            product= ProductsModel(name,price,image,quantity )
+            item = products_model.add_item()
+            
+            return make_response(jsonify({"status":"created", "product":item, "products":products}),201)
 
-            return make_response(jsonify({"status":"created", "product":item, "products":items}),201)
 
 
     @products_blueprint.route("/products", methods=["GET"])
     def productsall(): 
-        items = products_model.retrive_all_products()
-        if len(items) == 0:
+       
+        if len(products) == 0:
             return make_response(jsonify({"status":"not found","message":"products you are looking for does not esxist"}),404)
         else:
-            return make_response(jsonify({"status":"ok", "products":items}),200)
+            return make_response(jsonify({"status":"ok", "products":products}),200)
 
     
 
     @products_blueprint.route('/products/<int:product_id>', methods=["GET"])
     def specificproduct(product_id):
-    
-        item = products_model.find_product_by_id(product_id)
-        if not item:
+        product = [product for product in products if product.get('product_id')==product_id]
+        if len(products) == 0:
             return make_response(jsonify({"status":"not found","message":"product you are looking for does not esxist"}),404)
         else:
-            return make_response(jsonify({"status":"ok", "product":item}),200)
+            return make_response(jsonify({"status":"ok", "product":product}),200)
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,101 +6,15 @@ from app.api.V1.views.sales import sales
 
 config = 'TESTING'
 app = create_app(config)
-
-
-
-
 #SALE INPUT FOR TESTS
-
-sample_sale=[{
-            
-            
-                            
-                            "product":"tv",
-                            "quantity":"abc",
-                            "total":"200"
-                            },
-                            
-            
-           
-             
-            
-            
-                            {
-                            "product":"123",
-                            "quantity":"4",
-                             "total":"200"
-                            },
-                            
-           
-          
-            
-            
-            
-              
-                            {
-                            "product":"",
-                            "quantity":"4",
-                             "total":"200"
-                            },
-                            
-            
-            
-            
-             
-                            {
-                            "product":"tv",
-                            "quantity":"",
-                             "total":"200"
-                            },
-                            
-            
-            
-             
-                            {
-                            "product":"tv",
-                            "quantity":"4",
-                             "total":""
-                            },
-                            
-            
-             
-            
-                            {
-                            "product":"tv",
-                            "quantity":"4",
-                             "total":"200"
-                            },
-                           
-            
-            
-           
-             
-                            {
-                            "product":"",
-                            "quantity":"",
-                             "total":""
-                            },
-            
-            
-             
-                            {
-                            "product":"tv",
-                            "quantity":"4",
-                             "total":"200"
-                            }]
-                            
-        
-
-
-
-
-
-
-
-
-'''-------------------------------------------------------------------------------------------------------------------------------'''
-
+sample_sale=[{ "product":"tv","quantity":"abc","total":"200"},
+            {"product":"123","quantity":"4","total":"200"},
+            {"product":"","quantity":"4", "total":"200"},
+            {"product":"tv","quantity":"", "total":"200" },
+            {"product":"tv","quantity":"4", "total":"" },
+            {"product":"tv","quantity":"4","total":"200"},
+            {"product":"", "quantity":"","total":"" },
+            {"product":"tv","quantity":"4","total":"200"}]
 #GET ALL SALES TESTS
 
 
@@ -109,9 +23,6 @@ def test_sales_retrive_all():
     
     response= result.get('/api/v1/sales',content_type='application/json')
     assert(response.status_code==404)
-
-'''-------------------------------------------------------------------------------------------------------------------------------'''
-
 #ADD SALE TESTS
 
 
@@ -120,8 +31,6 @@ def test_sale_quantity_not_digit():
    
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[0]) ,content_type='application/json')
     assert(response.status_code==404)
-    
-
 def test_sales_product_name_not_str():
     result=app.test_client()
    
@@ -163,10 +72,6 @@ def test_sales_sale_items_empty():
     response= result.post('/api/v1/add_sale', data=json.dumps(sample_sale[7]) ,content_type='application/json')
     json.loads(response.data)
     assert(response.status_code==201)'''
-    
-
-'''-------------------------------------------------------------------------------------------------------------------------------'''
-
 #GET SPECIFIC SALE TESTS
 
 
@@ -188,3 +93,18 @@ def test_get_sale_successfully():
    
     response= result.get('/api/v1/sales/1' ,content_type='application/json')
     assert(response.status_code == 404)
+
+    
+
+
+    
+
+        
+
+
+
+
+
+
+
+
