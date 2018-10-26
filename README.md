@@ -6,6 +6,7 @@ This repository holds the API endpoints for the store-manager app.
 [![Test Coverage](https://api.codeclimate.com/v1/badges/362aef5811d9653097c6/test_coverage)](https://codeclimate.com/github/kikimay/store-manager-Api/test_coverage)
 [![Build Status](https://travis-ci.org/kikimay/store-manager-Api.svg?branch=development)](https://travis-ci.org/kikimay/store-manager-Api)
 [![codecov](https://codecov.io/gh/kikimay/store-manager-Api/branch/development/graph/badge.svg)](https://codecov.io/gh/kikimay/store-manager-Api)
+[![Coverage Status](https://coveralls.io/repos/github/kikimay/store-manager-Api/badge.svg)](https://coveralls.io/github/kikimay/store-manager-Api)
 
  http://www.apache.org/licenses/LICENSE-2.0
 
