@@ -54,7 +54,7 @@ class Sales(object):
  
     @sales_blueprint.route("/sales", methods=["GET"])
     def salesall():
-        # if not sales:
+        
         if len(sales) == 0:
             return make_response(jsonify({"status":"not found","message":"sale you are looking for does not exist"}),404)
                    
